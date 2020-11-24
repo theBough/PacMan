@@ -5,6 +5,9 @@ Public Class Form1
     Dim xSpeed As Integer = 30
     Dim ySpeed As Integer = 0
 
+    Dim walls(100) As Label
+    Dim wallIndex As Integer = -1
+
     Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
         btnStart.Hide()
         TManimation.Start()
@@ -17,42 +20,42 @@ Public Class Form1
             Case 1
                 Select Case direction
                     Case "left"
-                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\leftOne.png")
+                        pacMan.Image = Image.FromFile(CurDir() & "\leftOne.png")
                     Case "right"
-                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\rightOne.png")
+                        pacMan.Image = Image.FromFile(CurDir() & "\rightOne.png")
                     Case "up"
-                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\upOne.png")
+                        pacMan.Image = Image.FromFile(CurDir() & "\upOne.png")
                     Case "down"
-                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\downOne.png")
+                        pacMan.Image = Image.FromFile(CurDir() & "\downOne.png")
                 End Select
                
 
             Case 2
                 Select Case direction
                     Case "left"
-                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\leftTwo.png")
+                        pacMan.Image = Image.FromFile(CurDir() & "\leftTwo.png")
                     Case "right"
-                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\rightTwo.png")
+                        pacMan.Image = Image.FromFile(CurDir() & "\rightTwo.png")
                     Case "up"
-                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\upTwo.png")
+                        pacMan.Image = Image.FromFile(CurDir() & "\upTwo.png")
                     Case "down"
-                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\downTwo.png")
+                        pacMan.Image = Image.FromFile(CurDir() & "\downTwo.png")
                 End Select
 
             Case 3
                 Select Case direction
                     Case "left"
-                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\leftOne.png")
+                        pacMan.Image = Image.FromFile(CurDir() & "\leftOne.png")
                     Case "right"
-                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\rightOne.png")
+                        pacMan.Image = Image.FromFile(CurDir() & "\rightOne.png")
                     Case "up"
-                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\upOne.png")
+                        pacMan.Image = Image.FromFile(CurDir() & "\upOne.png")
                     Case "down"
-                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\downOne.png")
+                        pacMan.Image = Image.FromFile(CurDir() & "\downOne.png")
                 End Select
 
             Case 4
-                pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\pmone.png")
+                pacMan.Image = Image.FromFile(CurDir() & "\pmone.png")
                 animationCounter = 0
         End Select
         animationCounter += 1
@@ -79,7 +82,8 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        makeDots()
+        makeAllTheWalls()
     End Sub
     Sub makeDots()
         For x = 0 To 25
@@ -88,8 +92,8 @@ Public Class Form1
                 With grid(x, y)
                     .Height = 5
                     .Width = 5
-                    .Left = x * 30 + 10
-                    .Top = y * 30 + 10
+                    .Left = x * 30 + 30
+                    .Top = y * 30 + 30
                     .Image = pacManDot.Image
                     .SizeMode = PictureBoxSizeMode.StretchImage
                 End With
@@ -101,5 +105,43 @@ Public Class Form1
     Private Sub pacManMover_Tick(sender As Object, e As EventArgs) Handles pacManMover.Tick
         pacMan.Left += xSpeed
         pacMan.Top += ySpeed
+    End Sub
+
+    'This sub will tak 4 inputs and draw
+    'rectangles and squares on the form.
+    Sub makeWall(w As Integer, h As Integer, x As Integer, y As Integer, col As Color)
+        wallIndex += 1
+        walls(wallIndex) = New Label
+        With walls(wallIndex)
+            .Height = h
+            .Width = w
+            .Top = y
+            .Left = x
+            .BackColor = col
+            .AutoSize = False
+            .Text = ""
+        End With
+        Me.Controls.Add(walls(wallIndex))
+        walls(wallIndex).BringToFront()
+    End Sub
+    Sub makeAllTheWalls()
+        makeWall(840, 15, 0, 0, Color.Blue)
+        makeWall(836, 11, 2, 2, Color.Black)
+
+        makeWall(15, 270, 0, 0, Color.Blue)
+        makeWall(11, 266, 2, 2, Color.Black)
+
+        makeWall(105, 75, 60, 60, Color.Blue)
+        makeWall(101, 71, 62, 62, Color.Black)
+
+        makeWall(135, 75, 210, 60, Color.Blue)
+        makeWall(131, 71, 212, 62, Color.Black)
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        makeAllTheWalls()
+        Button1.Hide()
+        Me.Focus()
     End Sub
 End Class
