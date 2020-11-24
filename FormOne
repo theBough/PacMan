@@ -1,0 +1,105 @@
+Public Class Form1
+    Dim animationCounter As Integer = 0
+    Dim direction As String = "down"
+    Dim grid(26, 29) As PictureBox
+    Dim xSpeed As Integer = 30
+    Dim ySpeed As Integer = 0
+
+    Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
+        btnStart.Hide()
+        TManimation.Start()
+        makeDots()
+        pacManMover.Start()
+        Me.Focus()
+    End Sub
+    Private Sub TManimation_Tick(sender As Object, e As EventArgs) Handles TManimation.Tick
+        Select Case animationCounter
+            Case 1
+                Select Case direction
+                    Case "left"
+                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\leftOne.png")
+                    Case "right"
+                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\rightOne.png")
+                    Case "up"
+                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\upOne.png")
+                    Case "down"
+                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\downOne.png")
+                End Select
+               
+
+            Case 2
+                Select Case direction
+                    Case "left"
+                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\leftTwo.png")
+                    Case "right"
+                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\rightTwo.png")
+                    Case "up"
+                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\upTwo.png")
+                    Case "down"
+                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\downTwo.png")
+                End Select
+
+            Case 3
+                Select Case direction
+                    Case "left"
+                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\leftOne.png")
+                    Case "right"
+                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\rightOne.png")
+                    Case "up"
+                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\upOne.png")
+                    Case "down"
+                        pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\downOne.png")
+                End Select
+
+            Case 4
+                pacMan.Image = Image.FromFile("P:\Corbin.Boughen\Assignments\CompSci\Pacman\pmone.png")
+                animationCounter = 0
+        End Select
+        animationCounter += 1
+    End Sub
+    Private Sub Form1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
+        Select Case e.KeyChar
+            Case "a"
+                xSpeed = -30
+                ySpeed = 0
+                direction = "left"
+            Case "s"
+                xSpeed = 0
+                ySpeed = 30
+                direction = "down"
+            Case "d"
+                xSpeed = 30
+                ySpeed = 0
+                direction = "right"
+            Case "w"
+                xSpeed = 0
+                ySpeed = -30
+                direction = "up"
+        End Select
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+    Sub makeDots()
+        For x = 0 To 25
+            For y = 0 To 28
+                grid(x, y) = New PictureBox
+                With grid(x, y)
+                    .Height = 5
+                    .Width = 5
+                    .Left = x * 30 + 10
+                    .Top = y * 30 + 10
+                    .Image = pacManDot.Image
+                    .SizeMode = PictureBoxSizeMode.StretchImage
+                End With
+                Me.Controls.Add(grid(x, y))
+                grid(x, y).BringToFront()
+            Next
+        Next
+    End Sub
+    Private Sub pacManMover_Tick(sender As Object, e As EventArgs) Handles pacManMover.Tick
+        pacMan.Left += xSpeed
+        pacMan.Top += ySpeed
+    End Sub
+End Class
