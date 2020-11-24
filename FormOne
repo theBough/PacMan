@@ -131,11 +131,14 @@ Public Class Form1
         makeWall(15, 270, 0, 0, Color.Blue)
         makeWall(11, 266, 2, 2, Color.Black)
 
-        makeWall(105, 75, 60, 60, Color.Blue)
-        makeWall(101, 71, 62, 62, Color.Black)
+        makeWall(120, 90, 45, 45, Color.Blue)
+        makeWall(116, 86, 47, 47, Color.Black)
 
-        makeWall(135, 75, 210, 60, Color.Blue)
-        makeWall(131, 71, 212, 62, Color.Black)
+        makeWall(150, 90, 195, 45, Color.Blue)
+        makeWall(146, 86, 197, 47, Color.Black)
+
+        makeWall(30, 115, 375, 15, Color.Blue)
+        makeWall(26, 111, 377, 13, Color.Black)
 
     End Sub
 
