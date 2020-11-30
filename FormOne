@@ -8,8 +8,8 @@ Public Class Form1
     Dim walls(100) As Label
     Dim wallIndex As Integer = -1
 
-    Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
-        btnStart.Hide()
+    Private Sub btnStart_Click(sender As Object, e As EventArgs)
+
         TManimation.Start()
         makeDots()
         pacManMover.Start()
@@ -84,6 +84,8 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         makeDots()
         makeAllTheWalls()
+        pacManMover.Start()
+        TManimation.Start()
     End Sub
     Sub makeDots()
         For x = 0 To 25
@@ -105,6 +107,8 @@ Public Class Form1
     Private Sub pacManMover_Tick(sender As Object, e As EventArgs) Handles pacManMover.Tick
         pacMan.Left += xSpeed
         pacMan.Top += ySpeed
+        collisionWithWalls()
+        collisionWithDots()
     End Sub
 
     'This sub will tak 4 inputs and draw
@@ -125,26 +129,64 @@ Public Class Form1
         walls(wallIndex).BringToFront()
     End Sub
     Sub makeAllTheWalls()
+        'Roof
         makeWall(840, 15, 0, 0, Color.Blue)
         makeWall(836, 11, 2, 2, Color.Black)
-
+        'left wall
         makeWall(15, 270, 0, 0, Color.Blue)
         makeWall(11, 266, 2, 2, Color.Black)
+        'top left
+        makeWall(120, 90, 46, 46, Color.Blue)
+        makeWall(116, 86, 48, 48, Color.Black)
+        'Top row second in
+        makeWall(150, 90, 197, 45, Color.Blue)
+        makeWall(146, 86, 199, 47, Color.Black)
+        'top row middle
+        makeWall(30, 115, 376, 15, Color.Blue)
+        makeWall(26, 111, 378, 13, Color.Black)
+        'top row second from right
+        makeWall(150, 90, 436, 45, Color.Blue)
+        makeWall(146, 86, 438, 47, Color.Black)
+       
+        'top row right corner
+        makeWall(120, 90, 616, 46, Color.Blue)
+        makeWall(116, 86, 618, 48, Color.Black)
 
-        makeWall(120, 90, 45, 45, Color.Blue)
-        makeWall(116, 86, 47, 47, Color.Black)
-
-        makeWall(150, 90, 195, 45, Color.Blue)
-        makeWall(146, 86, 197, 47, Color.Black)
-
-        makeWall(30, 115, 375, 15, Color.Blue)
-        makeWall(26, 111, 377, 13, Color.Black)
 
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
         makeAllTheWalls()
-        Button1.Hide()
+
         Me.Focus()
+    End Sub
+    Sub collisionWithWalls()
+        For i = 0 To wallIndex
+            If pacMan.Bounds.IntersectsWith(walls(i).Bounds) Then
+                Select Case direction
+                    Case "up"
+                        ySpeed = 0
+                        pacMan.Top += 30
+                    Case "down"
+                        ySpeed = 0
+                        pacMan.Top -= 30
+                    Case "left"
+                        xSpeed = 0
+                        pacMan.Left += 30
+                    Case "right"
+                        xSpeed = 0
+                        pacMan.Left -= 30
+                End Select
+            End If
+        Next
+    End Sub
+    Sub collisionWithDots()
+        For x = 0 To 25
+            For y = 0 To 28
+                If pacMan.Bounds.IntersectsWith(grid(x, y).Bounds) Then
+                    grid(x, y).Hide()
+                End If
+            Next
+        Next
     End Sub
 End Class
