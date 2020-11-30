@@ -147,11 +147,27 @@ Public Class Form1
         'top row second from right
         makeWall(150, 90, 436, 45, Color.Blue)
         makeWall(146, 86, 438, 47, Color.Black)
-       
         'top row right corner
         makeWall(120, 90, 616, 46, Color.Blue)
         makeWall(116, 86, 618, 48, Color.Black)
-
+        'Second row pos1
+        makeWall(120, 30, 46, 166, Color.Blue)
+        makeWall(116, 26, 48, 168, Color.Black)
+        'second row pos2
+        makeWall(30, 180, 197, 166, Color.Blue)
+        makeWall(26, 176, 199, 168, Color.Black)
+        'second row pos3
+        makeWall(270, 30, 257, 166, Color.Blue)
+        makeWall(266, 26, 259, 168, Color.Black)
+        'second row pos 4
+        makeWall(30, 180, 557, 166, Color.Blue)
+        makeWall(26, 176, 559, 168, Color.Black)
+        'second row pos 5
+        makeWall(120, 30, 617, 166, Color.Blue)
+        makeWall(116, 26, 619, 168, Color.Black)
+        'Third Row Pos 1
+        makeWall(165, 30, 0, 226, Color.Blue)
+        makeWall(161, 26, 2, 228, Color.Black)
 
     End Sub
 
