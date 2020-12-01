@@ -3,6 +3,10 @@ Public Class Form1
     Dim xSpeed As Integer
     Dim ySpeed As Integer
     Dim direction As String
+    Dim animationCounter As Integer = 0
+
+    Dim walls(100) As Label
+    Dim wallIndex As Integer = -1
     Private Sub Form1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
         Select Case e.KeyChar
             Case "a"
@@ -23,11 +27,10 @@ Public Class Form1
                 direction = "up"
         End Select
     End Sub
-
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         makeGrid()
+        makeAllTheWalls()
     End Sub
-
     Sub makeGrid()
         For x = 0 To 25
             For y = 0 To 28
@@ -43,13 +46,11 @@ Public Class Form1
             Next
         Next
     End Sub
-
     Private Sub pacManMover_Tick(sender As Object, e As EventArgs) Handles pacManMover.Tick
         pacMan.Left += xSpeed
         pacMan.Top += ySpeed
         collision()
     End Sub
-
     Sub collision()
         For Each thisLabel In Me.Controls
             If thisLabel.GetType.Equals(Label1.GetType) And pacMan.Bounds.IntersectsWith(thisLabel.bounds) Then
@@ -70,4 +71,71 @@ Public Class Form1
             End If
         Next
     End Sub
+    Private Sub tmAnimation_Tick(sender As Object, e As EventArgs) Handles tmAnimation.Tick
+        Select Case animationCounter
+            Case 1
+                Select Case direction
+                    Case "left"
+                        pacMan.Image = Image.FromFile(CurDir() & "\leftOne.png")
+                    Case "right"
+                        pacMan.Image = Image.FromFile(CurDir() & "\rightOne.png")
+                    Case "up"
+                        pacMan.Image = Image.FromFile(CurDir() & "\upOne.png")
+                    Case "down"
+                        pacMan.Image = Image.FromFile(CurDir() & "\downOne.png")
+                End Select
+            Case 2
+                Select Case direction
+                    Case "left"
+                        pacMan.Image = Image.FromFile(CurDir() & "\leftTwo.png")
+                    Case "right"
+                        pacMan.Image = Image.FromFile(CurDir() & "\rightTwo.png")
+                    Case "up"
+                        pacMan.Image = Image.FromFile(CurDir() & "\upTwo.png")
+                    Case "down"
+                        pacMan.Image = Image.FromFile(CurDir() & "\downTwo.png")
+                End Select
+            Case 3
+                Select Case direction
+                    Case "left"
+                        pacMan.Image = Image.FromFile(CurDir() & "\leftOne.png")
+                    Case "right"
+                        pacMan.Image = Image.FromFile(CurDir() & "\rightOne.png")
+                    Case "up"
+                        pacMan.Image = Image.FromFile(CurDir() & "\upOne.png")
+                    Case "down"
+                        pacMan.Image = Image.FromFile(CurDir() & "\downOne.png")
+                End Select
+            Case 4
+                pacMan.Image = Image.FromFile(CurDir() & "\pmone.png")
+                animationCounter = 0
+        End Select
+        animationCounter += 1
+
+    End Sub
+    Sub makeWall(w As Integer, h As Integer, x As Integer, y As Integer, col As Color)
+        wallIndex += 1
+        walls(wallIndex) = New Label
+        With walls(wallIndex)
+            .Height = h
+            .Width = w
+            .Top = y
+            .Left = x
+            .BackColor = col
+            .AutoSize = False
+            .Text = ""
+        End With
+        Me.Controls.Add(walls(wallIndex))
+        walls(wallIndex).BringToFront()
+    End Sub
+    Sub makeAllTheWalls()
+        'roof
+        makeWall(840, 15, 5, 5, Color.Blue)
+        makeWall(836, 11, 7, 7, Color.Black)
+        'left wall
+        makeWall(15, 300, 5, 5, Color.Blue)
+        makeWall(11, 296, 7, 7, Color.Black)
+
+    End Sub
+
 End Class
