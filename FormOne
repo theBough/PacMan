@@ -52,8 +52,8 @@ Public Class Form1
         collision()
     End Sub
     Sub collision()
-        For Each thisLabel In Me.Controls
-            If thisLabel.GetType.Equals(Label1.GetType) And pacMan.Bounds.IntersectsWith(thisLabel.bounds) Then
+        For i = 0 To wallIndex
+            If pacMan.Bounds.IntersectsWith(walls(i).Bounds) Then
                 Select Case direction
                     Case "left"
                         xSpeed = 0
@@ -70,7 +70,15 @@ Public Class Form1
                 End Select
             End If
         Next
+        For x = 0 To 25
+            For y = 0 To 28
+                If pacMan.Bounds.IntersectsWith(grid(x, y).Bounds) Then
+                    grid(x, y).Hide()
+                End If
+            Next
+        Next
     End Sub
+
     Private Sub tmAnimation_Tick(sender As Object, e As EventArgs) Handles tmAnimation.Tick
         Select Case animationCounter
             Case 1
@@ -135,6 +143,23 @@ Public Class Form1
         'left wall
         makeWall(15, 300, 5, 5, Color.Blue)
         makeWall(11, 296, 7, 7, Color.Black)
+        'Row 1 pos 1
+        makeWall(90, 60, 60, 60, Color.Blue)
+        makeWall(86, 56, 62, 62, Color.Black)
+        'Row 1 pos 2
+        makeWall(120, 60, 180, 60, Color.Blue)
+        makeWall(116, 56, 182, 62, Color.Black)
+        'Row 1 pos 3
+        makeWall(30, 120, 330, 5, Color.Blue)
+        makeWall(26, 116, 332, 7, Color.Black)
+        'Clean up the over laps
+        makeWall(35, 11, 330, 7, Color.Black)
+        'Row 1 pos 4
+        makeWall(120, 60, 390, 60, Color.Blue)
+        makeWall(116, 56, 392, 62, Color.Black)
+        'Row 1 pos 5
+        makeWall(90, 60, 540, 60, Color.Blue)
+        makeWall(86, 56, 542, 62, Color.Black)
 
     End Sub
 
