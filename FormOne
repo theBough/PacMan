@@ -141,7 +141,7 @@ Public Class Form1
         makeWall(680, 15, 5, 5, Color.Blue)
 
         'left wall
-        makeWall(15, 300, 5, 5, Color.Blue)
+        makeWall(15, 235, 5, 5, Color.Blue)
 
         'Row 1 pos 1
         makeWall(90, 60, 60, 60, Color.Blue)
@@ -161,7 +161,7 @@ Public Class Form1
         makeWall(90, 60, 540, 60, Color.Blue)
         makeWall(86, 56, 542, 62, Color.Black)
         'right wall
-        makeWall(15, 296, 670, 5, Color.Blue)
+        makeWall(15, 235, 670, 5, Color.Blue)
 
         '-----------------------------------------------
         'Row 2 Pos 1
@@ -194,14 +194,31 @@ Public Class Form1
         makeWall(116, 26, 392, 212, Color.Black)
         'Row 3 pos 5
         makeWall(145, 30, 540, 210, Color.Blue)
-        makeWall(141, 26, 542, 212, Color.Black)
+        '--------------------------------------------
+        'Row 4 pos 1
+        makeWall(20, 150, 130, 210, Color.Blue)
+        makeWall(16, 146, 132, 212, Color.Black)
+        'Row 4 pos 2
+        makeWall(20, 150, 540, 210, Color.Blue)
+        makeWall(16, 146, 542, 212, Color.Black)
+        'Black Box
+        makeWall(120, 120, 2, 240, Color.Black)
+        makeWall(120, 120, 560, 240, Color.Black)
+        'Ghost House
+        makeWall(210, 180, 240, 270, Color.Blue)
+        makeWall(206, 176, 242, 272, Color.Black)
+        makeWall(180, 150, 255, 285, Color.Blue)
+        makeWall(176, 146, 257, 287, Color.Black)
         'coverup 
         makeWall(676, 11, 7, 7, Color.Black)
-        makeWall(11, 296, 7, 7, Color.Black)
+        makeWall(11, 231, 7, 7, Color.Black)
         makeWall(26, 206, 182, 152, Color.Black)
         makeWall(206, 26, 242, 152, Color.Black)
         makeWall(26, 206, 482, 152, Color.Black)
-        makeWall(11, 292, 672, 7, Color.Black)
+        makeWall(11, 231, 672, 7, Color.Black)
+        makeWall(141, 26, 7, 212, Color.Black)
+        makeWall(141, 26, 542, 212, Color.Black)
+
     End Sub
 
 End Class
