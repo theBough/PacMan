@@ -139,7 +139,7 @@ Public Class Form1
     Sub makeAllTheWalls()
         'roof
         makeWall(840, 15, 5, 5, Color.Blue)
-        makeWall(836, 11, 7, 7, Color.Black)
+
         'left wall
         makeWall(15, 300, 5, 5, Color.Blue)
         makeWall(11, 296, 7, 7, Color.Black)
@@ -150,8 +150,8 @@ Public Class Form1
         makeWall(120, 60, 180, 60, Color.Blue)
         makeWall(116, 56, 182, 62, Color.Black)
         'Row 1 pos 3
-        makeWall(30, 120, 330, 5, Color.Blue)
-        makeWall(26, 116, 332, 7, Color.Black)
+        makeWall(30, 100, 330, 5, Color.Blue)
+        makeWall(26, 96, 332, 7, Color.Black)
         'Clean up the over laps
         makeWall(35, 11, 330, 7, Color.Black)
         'Row 1 pos 4
@@ -161,6 +161,8 @@ Public Class Form1
         makeWall(90, 60, 540, 60, Color.Blue)
         makeWall(86, 56, 542, 62, Color.Black)
 
+        'coverup 
+        makeWall(836, 11, 7, 7, Color.Black)
     End Sub
 
 End Class
