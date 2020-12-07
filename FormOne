@@ -32,7 +32,7 @@ Public Class Form1
         makeAllTheWalls()
     End Sub
     Sub makeGrid()
-        For x = 0 To 25
+        For x = 0 To 22
             For y = 0 To 28
                 grid(x, y) = New PictureBox
                 With grid(x, y)
@@ -70,7 +70,7 @@ Public Class Form1
                 End Select
             End If
         Next
-        For x = 0 To 25
+        For x = 0 To 22
             For y = 0 To 28
                 If pacMan.Bounds.IntersectsWith(grid(x, y).Bounds) Then
                     grid(x, y).Hide()
@@ -138,11 +138,11 @@ Public Class Form1
     End Sub
     Sub makeAllTheWalls()
         'roof
-        makeWall(840, 15, 5, 5, Color.Blue)
+        makeWall(680, 15, 5, 5, Color.Blue)
 
         'left wall
         makeWall(15, 300, 5, 5, Color.Blue)
-        makeWall(11, 296, 7, 7, Color.Black)
+
         'Row 1 pos 1
         makeWall(90, 60, 60, 60, Color.Blue)
         makeWall(86, 56, 62, 62, Color.Black)
@@ -160,9 +160,48 @@ Public Class Form1
         'Row 1 pos 5
         makeWall(90, 60, 540, 60, Color.Blue)
         makeWall(86, 56, 542, 62, Color.Black)
+        'right wall
+        makeWall(15, 296, 670, 5, Color.Blue)
 
+        '-----------------------------------------------
+        'Row 2 Pos 1
+        makeWall(90, 30, 60, 150, Color.Blue)
+        makeWall(86, 26, 62, 152, Color.Black)
+        'Row 2 pos 2
+        makeWall(30, 210, 180, 150, Color.Blue)
+
+        'Row 2 pos 3
+        makeWall(210, 30, 240, 150, Color.Blue)
+
+        'Row 2 pos 4
+        makeWall(30, 210, 480, 150, Color.Blue)
+
+        'Row 2 Pos 5
+        makeWall(90, 30, 540, 150, Color.Blue)
+        makeWall(86, 26, 542, 152, Color.Black)
+        '-----------------------------------------------
+        'Row 3 pos 1
+        makeWall(145, 30, 5, 210, Color.Blue)
+        makeWall(141, 26, 7, 212, Color.Black)
+        'Row 3 pos 2
+        makeWall(120, 30, 180, 210, Color.Blue)
+        makeWall(116, 26, 182, 212, Color.Black)
+        'Row 3 pos 2
+        makeWall(30, 90, 330, 150, Color.Blue)
+        makeWall(26, 86, 332, 152, Color.Black)
+        'Row 3 pos 4
+        makeWall(120, 30, 390, 210, Color.Blue)
+        makeWall(116, 26, 392, 212, Color.Black)
+        'Row 3 pos 5
+        makeWall(145, 30, 540, 210, Color.Blue)
+        makeWall(141, 26, 542, 212, Color.Black)
         'coverup 
-        makeWall(836, 11, 7, 7, Color.Black)
+        makeWall(676, 11, 7, 7, Color.Black)
+        makeWall(11, 296, 7, 7, Color.Black)
+        makeWall(26, 206, 182, 152, Color.Black)
+        makeWall(206, 26, 242, 152, Color.Black)
+        makeWall(26, 206, 482, 152, Color.Black)
+        makeWall(11, 292, 672, 7, Color.Black)
     End Sub
 
 End Class
