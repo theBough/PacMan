@@ -220,7 +220,7 @@ Public Class Form1
 
         'Row 6 pos 1.5
         makeWall(30, 120, 120, 390, Color.Blue)
-        makeWall(26, 116, 122, 392, Color.Black)
+
         'Row 6 pos 2
         makeWall(30, 120, 180, 390, Color.Blue)
 
@@ -235,7 +235,37 @@ Public Class Form1
         makeWall(141, 26, 542, 392, Color.Black)
         'Row 7 pos 1
         makeWall(145, 30, 5, 480, Color.Blue)
-        makeWall(141, 26, 7, 482, Color.Black)
+
+        'Row 7 pos 2
+        makeWall(210, 30, 240, 480, Color.Blue)
+
+        'Row 7 pos 3
+        makeWall(145, 30, 540, 480, Color.Blue)
+        makeWall(141, 26, 542, 482, Color.Black)
+        'Black Box
+        makeWall(100, 60, 10, 420, Color.Black)
+        makeWall(100, 60, 580, 420, Color.Black)
+        'Row 8 pos 1
+        makeWall(15, 240, 5, 480, Color.Blue)
+        makeWall(11, 236, 7, 482, Color.Black)
+        'Row 8 pos 2
+        makeWall(30, 90, 330, 480, Color.Blue)
+        makeWall(26, 86, 332, 482, Color.Black)
+        'Row 8 pos 3
+        makeWall(15, 240, 670, 480, Color.Blue)
+        makeWall(11, 236, 672, 482, Color.Black)
+        'Row 9 pos 1
+        makeWall(90, 30, 60, 540, Color.Blue)
+        makeWall(86, 26, 62, 542, Color.Black)
+        'Row 9 pos 2
+        makeWall(120, 30, 180, 540, Color.Blue)
+        makeWall(116, 26, 182, 542, Color.Black)
+        'Row 9 pos 3
+        makeWall(120, 30, 390, 540, Color.Blue)
+        makeWall(116, 26, 392, 542, Color.Black)
+        'Row 9 pos 4
+        makeWall(90, 30, 540, 540, Color.Blue)
+        makeWall(86, 26, 542, 542, Color.Black)
         'coverup 
         makeWall(676, 11, 7, 7, Color.Black)
         makeWall(11, 231, 7, 7, Color.Black)
@@ -250,6 +280,10 @@ Public Class Form1
         makeWall(141, 26, 7, 392, Color.Black)
         makeWall(26, 116, 182, 392, Color.Black)
         makeWall(26, 116, 542, 392, Color.Black)
+        makeWall(26, 116, 122, 392, Color.Black)
+        makeWall(141, 26, 7, 482, Color.Black)
+        makeWall(206, 26, 242, 482, Color.Black)
+        makeWall(141, 26, 542, 482, Color.Black)
 
     End Sub
 
