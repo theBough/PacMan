@@ -33,7 +33,7 @@ Public Class Form1
     End Sub
     Sub makeGrid()
         For x = 0 To 22
-            For y = 0 To 28
+            For y = 0 To 24
                 grid(x, y) = New PictureBox
                 With grid(x, y)
                     .Height = 5
@@ -49,6 +49,13 @@ Public Class Form1
     Private Sub pacManMover_Tick(sender As Object, e As EventArgs) Handles pacManMover.Tick
         pacMan.Left += xSpeed
         pacMan.Top += ySpeed
+        Me.Text = pacMan.Left & "              " & pacMan.Top
+        If pacMan.Left < 0 Then
+            pacMan.Left = 660
+        End If
+        If pacMan.Left > 660 Then
+            pacMan.Left = 0
+        End If
         collision()
     End Sub
     Sub collision()
@@ -71,7 +78,7 @@ Public Class Form1
             End If
         Next
         For x = 0 To 22
-            For y = 0 To 28
+            For y = 0 To 24
                 If pacMan.Bounds.IntersectsWith(grid(x, y).Bounds) Then
                     grid(x, y).Hide()
                 End If
@@ -246,13 +253,13 @@ Public Class Form1
         makeWall(100, 60, 10, 420, Color.Black)
         makeWall(100, 60, 580, 420, Color.Black)
         'Row 8 pos 1
-        makeWall(15, 240, 5, 480, Color.Blue)
+        makeWall(15, 255, 5, 480, Color.Blue)
 
         'Row 8 pos 2
         makeWall(30, 90, 330, 480, Color.Blue)
         makeWall(26, 86, 332, 482, Color.Black)
         'Row 8 pos 3
-        makeWall(15, 240, 670, 480, Color.Blue)
+        makeWall(15, 255, 670, 480, Color.Blue)
 
         'Row 9 pos 1
         makeWall(90, 30, 60, 540, Color.Blue)
