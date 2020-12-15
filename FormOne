@@ -5,7 +5,7 @@ Public Class Form1
     Dim direction As String
     Dim animationCounter As Integer = 0
 
-    Dim walls(100) As Label
+    Dim walls(200) As Label
     Dim wallIndex As Integer = -1
     Private Sub Form1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
         Select Case e.KeyChar
@@ -247,13 +247,13 @@ Public Class Form1
         makeWall(100, 60, 580, 420, Color.Black)
         'Row 8 pos 1
         makeWall(15, 240, 5, 480, Color.Blue)
-        makeWall(11, 236, 7, 482, Color.Black)
+
         'Row 8 pos 2
         makeWall(30, 90, 330, 480, Color.Blue)
         makeWall(26, 86, 332, 482, Color.Black)
         'Row 8 pos 3
         makeWall(15, 240, 670, 480, Color.Blue)
-        makeWall(11, 236, 672, 482, Color.Black)
+
         'Row 9 pos 1
         makeWall(90, 30, 60, 540, Color.Blue)
         makeWall(86, 26, 62, 542, Color.Black)
@@ -265,8 +265,48 @@ Public Class Form1
         makeWall(116, 26, 392, 542, Color.Black)
         'Row 9 pos 4
         makeWall(90, 30, 540, 540, Color.Blue)
-        makeWall(86, 26, 542, 542, Color.Black)
+
+        'Row 10 pos 1
+        makeWall(30, 90, 120, 540, Color.Blue)
+        makeWall(26, 86, 122, 542, Color.Black)
+        'Row 10 pos 2
+        makeWall(30, 90, 540, 540, Color.Blue)
+        makeWall(26, 86, 542, 542, Color.Black)
+        'Row 11 pos 1
+        makeWall(75, 30, 5, 600, Color.Blue)
+        makeWall(71, 26, 7, 602, Color.Black)
+        'Row 11 pos 2
+        makeWall(30, 90, 180, 600, Color.Blue)
+
+        'Row 11 pos 3
+        makeWall(210, 30, 240, 600, Color.Blue)
+
+        'Row 11 pos 4
+        makeWall(30, 90, 330, 600, Color.Blue)
+        makeWall(26, 86, 332, 602, Color.Black)
+        'Row 11 pos 5
+        makeWall(30, 90, 480, 600, Color.Blue)
+
+        'Row 11 pos 6
+        makeWall(85, 30, 600, 600, Color.Blue)
+        makeWall(81, 26, 602, 602, Color.Black)
+        'Row 12 pos 1
+        makeWall(240, 30, 60, 660, Color.Blue)
+        makeWall(236, 26, 62, 662, Color.Black)
+        'Row 12 pos 2
+        makeWall(240, 30, 390, 660, Color.Blue)
+        makeWall(236, 26, 392, 662, Color.Black)
+        'floor
+        makeWall(680, 15, 5, 720, Color.Blue)
+        makeWall(676, 11, 7, 722, Color.Black)
         'coverup 
+        makeWall(26, 86, 482, 602, Color.Black)
+        makeWall(26, 86, 182, 602, Color.Black)
+        makeWall(11, 236, 672, 482, Color.Black)
+        makeWall(204, 26, 242, 602, Color.Black)
+        makeWall(11, 236, 7, 482, Color.Black)
+        makeWall(86, 26, 542, 542, Color.Black)
+        makeWall(86, 26, 62, 542, Color.Black)
         makeWall(676, 11, 7, 7, Color.Black)
         makeWall(11, 231, 7, 7, Color.Black)
         makeWall(26, 206, 182, 152, Color.Black)
