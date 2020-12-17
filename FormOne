@@ -14,6 +14,10 @@ Public Class Form1
     Dim pinkYSpeed As Integer = 0
     Dim pinkDirection As String = "left"
 
+    Dim redXSpeed As Integer = 30
+    Dim redYSpeed As Integer = 0
+    Dim redDirection As String = "right"
+
     Dim generator As New Random
     Private Sub Form1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
         Select Case e.KeyChar
@@ -57,10 +61,17 @@ Public Class Form1
     Private Sub pacManMover_Tick(sender As Object, e As EventArgs) Handles pacManMover.Tick
         pacMan.Left += xSpeed
         pacMan.Top += ySpeed
-
+        Me.Text = pacMan.Left & "              " & pacMan.Top
         pinky.Left += pinkXSpeed
         pinky.Top += pinkYSpeed
-        Me.Text = pacMan.Left & "              " & pacMan.Top
+
+        blinky.Left += redXSpeed
+        blinky.Top += redYSpeed
+
+        wrapAround()
+        collision()
+    End Sub
+    Sub wrapAround()
         If pacMan.Left < 0 Then
             pacMan.Left = 660
         End If
@@ -73,7 +84,12 @@ Public Class Form1
         If pinky.Left > 660 Then
             pinky.Left = 0
         End If
-        collision()
+        If blinky.Left < 0 Then
+            blinky.Left = 660
+        End If
+        If blinky.Left > 660 Then
+            blinky.Left = 0
+        End If
     End Sub
     Sub collision()
         For i = 0 To wallIndex
@@ -114,6 +130,27 @@ Public Class Form1
                         turnLeftRight(pinky)
                 End Select
             End If
+            If blinky.Bounds.IntersectsWith(walls(i).Bounds) Then
+
+                Select Case redDirection
+                    Case "left"
+                        redXSpeed = 0
+                        blinky.Left += 30
+                        turnUpDown(blinky)
+                    Case "right"
+                        redXSpeed = 0
+                        blinky.Left -= 30
+                        turnUpDown(blinky)
+                    Case "up"
+                        redYSpeed = 0
+                        blinky.Top += 30
+                        turnLeftRight(blinky)
+                    Case "down"
+                        redYSpeed = 0
+                        blinky.Top -= 30
+                        turnLeftRight(blinky)
+                End Select
+            End If
         Next
         For x = 0 To 22
             For y = 0 To 24
@@ -124,59 +161,61 @@ Public Class Form1
         Next
     End Sub
     Sub turnLeftRight(thisGhost As PictureBox)
-        If generator.Next(1, 3) = 1 Then
-            Select Case thisGhost.Name
-                Case "pinky"
+
+        Select Case thisGhost.Name
+            Case "pinky"
+                If generator.Next(1, 3) = 1 Then
                     pinkXSpeed = -30
                     pinkDirection = "left"
-                Case "blinky"
-
-                Case "inky"
-
-                Case "clyde"
-
-            End Select
-        Else
-            Select Case thisGhost.Name
-                Case "pinky"
+                Else
                     pinkXSpeed = 30
                     pinkDirection = "right"
-                Case "blinky"
+                End If
+               
+            Case "blinky"
+                If pacMan.Left < blinky.Left Then
+                    redXSpeed = -30
+                    redDirection = "left"
+                Else
+                    redXSpeed = 30
+                    redDirection = "right"
+                End If
+            Case "inky"
 
-                Case "inky"
+            Case "clyde"
 
-                Case "clyde"
+        End Select
 
-            End Select
-        End If
+       
     End Sub
     Sub turnUpDown(thisGhost As PictureBox)
-        Label1.Text = "yup" & vbCrLf
-        If generator.Next(1, 3) = 1 Then
-            Select Case thisGhost.Name
-                Case "pinky"
+
+
+        Select Case thisGhost.Name
+            Case "pinky"
+                If generator.Next(1, 3) = 1 Then
                     pinkYSpeed = -30
                     pinkDirection = "up"
-                Case "blinky"
-
-                Case "inky"
-
-                Case "clyde"
-
-            End Select
-        Else
-            Select Case thisGhost.Name
-                Case "pinky"
+                Else
                     pinkYSpeed = 30
                     pinkDirection = "down"
-                Case "blinky"
+                End If
+                
+            Case "blinky"
+                If pacMan.Top < blinky.Top Then
+                    redYSpeed = -30
+                    redDirection = "up"
+                Else
+                    redYSpeed = 30
+                    redDirection = "down"
+                End If
 
-                Case "inky"
+            Case "inky"
 
-                Case "clyde"
+            Case "clyde"
 
-            End Select
-        End If
+        End Select
+       
     End Sub
 
     Private Sub tmAnimation_Tick(sender As Object, e As EventArgs) Handles tmAnimation.Tick
